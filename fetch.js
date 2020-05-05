@@ -4,15 +4,19 @@ fetch(`https://api.github.com/users/${name}`)
   .then(
     successResponse => {
       if (successResponse.status != 200) {
-        return  'Информация о пользователе не доступна';
-      } 
+        let error = document.createElement('div');
+        error.innerHTML = 'Информация о пользователе не доступна';
+        document.body.append(error);
+        } 
       else {
         return  successResponse.json();
-      }
-    },
+        }
+      },
     failResponse => {
-      return  'Информация о пользователе не доступна';
-    })
+      let error = document.createElement('div');
+      error.innerHTML = 'Информация о пользователе не доступна';
+      document.body.append(error);
+      })
   .then(result => {
     let avatar = document.createElement('img');
     avatar.src = result.avatar_url;
