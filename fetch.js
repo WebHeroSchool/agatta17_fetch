@@ -1,8 +1,11 @@
 let search = window.location.search.toString();
-if(typeof search == 'undefined')
-  let name = 'agatta17';
+let name;
+if (search == '')
+  name = 'agatta17';
 else
   name = search.substr(10);
+console.log(search);
+console.log(name);
 fetch(`https://api.github.com/users/${name}`)
   .then(
     successResponse => {
